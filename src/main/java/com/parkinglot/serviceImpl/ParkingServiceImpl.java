@@ -1,10 +1,12 @@
 package com.parkinglot.serviceImpl;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.springframework.stereotype.Service;
 
@@ -107,6 +109,19 @@ public class ParkingServiceImpl implements ParkingService, VechicleService {
 			
 			return true;
 		}
+	}
+
+	@Override
+	public List<Integer> getAvailableParkingSlots() {
+		
+		List<Integer> freeSltos = new ArrayList<>();
+		Integer max = parkingMetaModel!=null?parkingMetaModel.getParkingCapacity()+1:0;
+		IntStream.range(1, max)
+		.filter(i -> !parkingMap.containsKey((i))).forEach(i -> {
+			freeSltos.add(i);
+		});
+		return freeSltos;
+				
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.parkinglot.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.parkinglot.model.ParkingMetaModel;
@@ -15,5 +16,7 @@ public interface ParkingService {
 	VehicleModel parkingOut(String vechileNo);
 	
 	Map<Integer, ParkingModel> getparkedVachilesList();
+	
+	List<Integer> getAvailableParkingSlots();
 
 }

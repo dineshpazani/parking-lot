@@ -1,5 +1,6 @@
 package com.parkinglot.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,4 +42,11 @@ public class ParkingLotController {
 	public VehicleModel vechileOut(@PathVariable("vechileNo")String vechileNo) {		
 		return parkingService.parkingOut(vechileNo);
 	}
+	
+	
+	@GetMapping(value = "/freeslots")
+	public List<Integer> getfreesltos() {		
+		return parkingService.getAvailableParkingSlots();
+	}
+	
 }
